@@ -1,5 +1,4 @@
 <footer class="section section-primary" id="block-4">
-    <h3 align="center">Choose SIM you'd like to find</h3><br>
     <h4 align="center">Functioning SIMs</b></h4>
     <div class="section" align="center">
         <div class="container">
@@ -25,9 +24,7 @@
                         <tr th:each="simInfo : ${simInfos}">
                             <td th:text="${simInfo.phoneNumber}"></td>
                             <td th:text="${simInfo.operator}"></td>
-                            <!--<td th:text="${simInfo.id}"></td>-->
-                            <td
-                            <a th:href="@{'/update/' + ${simInfo.id}}" th:text="${simInfo.id}"></a></td>
+                            <td th:text="${simInfo.id}"></td>
                             <td th:text="${simInfo.ownerSurname}"></td>
                             <td th:text="${simInfo.employeeSurname}"></td>
                             <td th:text="${simInfo.curLocation}"></td>
@@ -36,7 +33,7 @@
                             <!--<td th:text="${simInfo.hostname}"></td>-->
                             <!--<td th:text="${simInfo.ipAddress}"></td>-->
                             <td
-                            <a th:href="@{'/update/' + ${simInfo.id}}" th:text="Edit"></a></td>
+                            <a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a></td>
                         </tr>
                         </tbody>
                     </table>

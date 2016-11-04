@@ -1,4 +1,4 @@
-<div th:include="header :: header"></div>
+<div th:include="header :: header" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 <body>
 <h4 align="center">Edit entry info</b></h4>
 <div class="section" align="center">
@@ -23,6 +23,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="simInfo : ${simInfos}">
+                        <form th action="/update" class="form-horizontal" method="post" enctype="form-data">
                         <td th:text="${simInfo.phoneNumber}"></td>
                         <td><input type="text" class="form-inline" id="text" name="Operator"></td>
                         <td th:text="${simInfo.id}"></td>
@@ -33,8 +34,9 @@
                         <td th:text="${simInfo.lastChangeDate}"></td>
                         <!--<td th:text="${simInfo.hostname}"></td>-->
                         <!--<td th:text="${simInfo.ipAddress}"></td>-->
-                        <td
-                        <a th:href="@{'/update/' + ${simInfo.id}}" th:text="Edit"></a></td>
+                        <td><input type="submit" value="Save" class="btn btn-primary btn-lg "></td>
+                        </td>
+                            </form>
                     </tr>
                     </tbody>
                 </table>

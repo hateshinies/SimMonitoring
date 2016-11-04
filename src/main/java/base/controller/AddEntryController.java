@@ -35,7 +35,7 @@ public class AddEntryController {
         simInfo.setOperator(operator);
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
         simInfoService.save(simInfo);
-        return "redirect:/all";
+        return "redirect:/";
 //        return new SimInfo();
     }
 }

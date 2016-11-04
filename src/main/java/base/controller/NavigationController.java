@@ -12,14 +12,22 @@ public class NavigationController {
     SimInfoService simInfoService;
 
     @RequestMapping("/")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("simInfos", simInfoService.findAll());
         return "home";
     }
 
+    @Deprecated                 ////
     @RequestMapping("/all")
     public String all(Model model) {
         model.addAttribute("simInfos", simInfoService.findAll());
         return "allEntries";
+    }
+
+    @RequestMapping(value = "/{id}")
+    public String update(Model model) {
+        model.addAttribute("simInfos", simInfoService.findAll());
+        return "editEntry";
     }
 
 }
