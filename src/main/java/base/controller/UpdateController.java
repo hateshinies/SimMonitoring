@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -18,7 +19,7 @@ public class UpdateController {
     @Autowired
     private SimInfoService simInfoService;
 
-    @RequestMapping(value = "/update")
+    @RequestMapping(value = "/update/{id}")
     public String update(@PathVariable Long id, @RequestHeader("host")
             String hostname, HttpServletRequest request){
         SimInfo simInfo = simInfoService.getById(id);
@@ -32,6 +33,6 @@ public class UpdateController {
         simInfo.setFunctioning(true);
         simInfo.setOperator(" ");
         simInfoService.save(simInfo);
-        return "allEntries";
+        return "editEntry";
     }
 }

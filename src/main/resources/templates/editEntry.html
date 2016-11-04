@@ -1,0 +1,49 @@
+<div th:include="header :: header"></div>
+<body>
+<h4 align="center">Edit entry info</b></h4>
+<div class="section" align="center">
+    <div class="container">
+        <div class="row" align="center">
+            <div class="form-group">
+                <table border="1" align="center" cellspacing="0" cellpadding="10">
+                    <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Operator</th>
+                        <th>Id</th>
+                        <th>Owner</th>
+                        <th>Employee</th>
+                        <th>CurLoc</th>
+                        <th>LastLoc</th>
+                        <th>LastChDate</th>
+                        <!--<th>Hostname</th>-->
+                        <!--<th>IP address</th>-->
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="simInfo : ${simInfos}">
+                        <td th:text="${simInfo.phoneNumber}"></td>
+                        <td><input type="text" class="form-inline" id="text" name="Operator"></td>
+                        <td th:text="${simInfo.id}"></td>
+                        <td><input type="text" class="form-inline" id="text" name="Owner"></td>
+                        <td><input type="text" class="form-inline" id="text" name="Employee"></td>
+                        <td><input type="text" class="form-inline" id="text" name="Location"></td>
+                        <td th:text="${simInfo.curLocation}"></td>
+                        <td th:text="${simInfo.lastChangeDate}"></td>
+                        <!--<td th:text="${simInfo.hostname}"></td>-->
+                        <!--<td th:text="${simInfo.ipAddress}"></td>-->
+                        <td
+                        <a th:href="@{'/update/' + ${simInfo.id}}" th:text="Edit"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="section">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<div th:include="footer :: footer"></div>

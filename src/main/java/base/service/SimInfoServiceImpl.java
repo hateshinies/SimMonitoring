@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Service("simInfoService")
 @Transactional
 public class SimInfoServiceImpl implements SimInfoService {
 
