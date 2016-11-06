@@ -4,7 +4,6 @@ import base.domain.SimInfo;
 import base.service.SimInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +18,9 @@ public class UpdateController {
 
     @RequestMapping(value = "/update/{id}")
     public String update(@RequestHeader("host")
-            String hostname, HttpServletRequest request, @RequestParam ("Id") long id,@RequestParam ("Operator") String operator,
-                         @RequestParam ("Employee") String employee, @RequestParam ("Location") String location,
-                         @RequestParam ("Owner") String owner){
+                                 String hostname, HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Operator") String operator,
+                         @RequestParam("Employee") String employee, @RequestParam("Location") String location,
+                         @RequestParam("Owner") String owner) {
         SimInfo simInfo = simInfoService.getById(id);
         simInfo.setLastLocation(simInfo.getCurLocation());
         simInfo.setCurLocation(location);

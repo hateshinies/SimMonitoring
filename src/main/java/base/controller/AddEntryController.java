@@ -18,11 +18,12 @@ public class AddEntryController {
     private SimInfoService simInfoService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@RequestParam ("PhoneNumber") String phoneNumber, @RequestParam ("Operator") String operator,
-                      @RequestParam ("Employee") String employee, @RequestParam ("Location") String location,
-                      @RequestParam ("Owner") String owner){
+    public String add(@RequestParam("PhoneNumber") String phoneNumber, @RequestParam("Operator") String operator,
+                      @RequestParam("Employee") String employee, @RequestParam("Location") String location,
+                      @RequestParam("Owner") String owner) {
         //validate phoneNumber
-//        if (phoneNumber.length() != 11 || phoneNumber.length() != 12 && !phoneNumber.startsWith("+")) return null;
+        phoneNumber = validateNumber(phoneNumber);
+        if (phoneNumber.equals("error")) return "home";
         long id = Long.parseLong(phoneNumber.substring(phoneNumber.length() - 4));  //взять последние 4 цифры
         if (simInfoService.exists(id)) id++;
         SimInfo simInfo = new SimInfo();
@@ -36,6 +37,18 @@ public class AddEntryController {
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
         simInfoService.save(simInfo);
         return "redirect:/";
-//        return new SimInfo();
+    }
+
+    private String validateNumber(String phoneNumber) {
+        switch (phoneNumber.length()) {
+            case 12:
+                if (phoneNumber.startsWith("+")) return phoneNumber;
+            case 11:
+                return "+" + phoneNumber;
+            case 10:
+                return "+7" + phoneNumber;
+            default:
+                return "error";
+        }
     }
 }
