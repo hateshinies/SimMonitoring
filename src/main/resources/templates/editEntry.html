@@ -22,18 +22,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="simInfo : ${simInfos}">
+                    <tr>
                         <form th action="/update" class="form-horizontal" method="post" enctype="form-data">
-                        <td th:text="${simInfo.phoneNumber}"></td>
+                        <td th:text="${editedSimInfo.phoneNumber}"></td>
                         <td><input type="text" class="form-inline" id="text" name="Operator"></td>
-                        <td th:text="${simInfo.id}"></td>
+                        <td th:text="${editedSimInfo.id}"></td>
+                            <input type="hidden" class="form-inline" id="text" name="Id" value="${editedSimInfo.id}"> <!--вот здесь костыль-->
                         <td><input type="text" class="form-inline" id="text" name="Owner"></td>
                         <td><input type="text" class="form-inline" id="text" name="Employee"></td>
                         <td><input type="text" class="form-inline" id="text" name="Location"></td>
-                        <td th:text="${simInfo.curLocation}"></td>
-                        <td th:text="${simInfo.lastChangeDate}"></td>
-                        <!--<td th:text="${simInfo.hostname}"></td>-->
-                        <!--<td th:text="${simInfo.ipAddress}"></td>-->
+                        <td th:text="${editedSimInfo.curLocation}"></td>
+                        <td th:text="${editedSimInfo.lastChangeDate}"></td>
+                        <!--<td th:text="${editedSimInfo.hostname}"></td>-->
+                        <!--<td th:text="${editedSimInfo.ipAddress}"></td>-->
                         <td><input type="submit" value="Save" class="btn btn-primary btn-lg "></td>
                         </td>
                             </form>

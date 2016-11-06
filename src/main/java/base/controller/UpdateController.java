@@ -18,8 +18,8 @@ public class UpdateController {
     private SimInfoService simInfoService;
 
     @RequestMapping(value = "/update/{id}")
-    public String update(@PathVariable Long id, @RequestHeader("host")
-            String hostname, HttpServletRequest request, @RequestParam ("Operator") String operator,
+    public String update(@RequestHeader("host")
+            String hostname, HttpServletRequest request, @RequestParam ("Id") long id,@RequestParam ("Operator") String operator,
                          @RequestParam ("Employee") String employee, @RequestParam ("Location") String location,
                          @RequestParam ("Owner") String owner){
         SimInfo simInfo = simInfoService.getById(id);
