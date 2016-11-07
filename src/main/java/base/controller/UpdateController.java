@@ -16,7 +16,7 @@ public class UpdateController {
     @Autowired
     private SimInfoService simInfoService;
 
-    @RequestMapping(value = "/update/{id}")
+    @RequestMapping(value = "/update")
     public String update(@RequestHeader("host")
                                  String hostname, HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Operator") String operator,
                          @RequestParam("Employee") String employee, @RequestParam("Location") String location,
