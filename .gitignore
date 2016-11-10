@@ -8,4 +8,3 @@
 *.war
 out
 gen
-WebSecurityConfig.java
