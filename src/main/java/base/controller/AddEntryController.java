@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -18,9 +19,9 @@ public class AddEntryController {
     private SimInfoService simInfoService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@RequestParam("PhoneNumber") String phoneNumber, @RequestParam("Operator") String operator,
-                      @RequestParam("Employee") String employee, @RequestParam("Location") String location,
-                      @RequestParam("Owner") String owner) {
+    public String add(HttpServletRequest request, @RequestParam("PhoneNumber") String phoneNumber, @RequestParam("Operator") String operator,
+                      @RequestParam("Location") String location,
+                      @RequestParam("Owner") String owner, @RequestParam(value = "HasCsd", required=false) boolean hasCsd) {
         //validate phoneNumber
         phoneNumber = validateNumber(phoneNumber);
         if (phoneNumber.equals("error")) return "home";
@@ -28,13 +29,15 @@ public class AddEntryController {
         if (simInfoService.exists(id)) id++;
         SimInfo simInfo = new SimInfo();
         simInfo.setId(id);
-        simInfo.setFunctioning(true);
-        simInfo.setCurLocation(location);
-        simInfo.setEmployeeSurname(employee);
-        simInfo.setOwnerSurname(owner);
         simInfo.setPhoneNumber(phoneNumber);
+        simInfo.setFunc(true);
+        simInfo.setHaveCsd(hasCsd);
+        simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
+        simInfo.setOwnerSurname(owner);
         simInfo.setOperator(operator);
+        simInfo.setCurLocation(location);
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
+        simInfo.setIpAddress(request.getRemoteAddr());
         simInfoService.save(simInfo);
         return "redirect:/";
     }
@@ -42,9 +45,13 @@ public class AddEntryController {
     private String validateNumber(String phoneNumber) {
         switch (phoneNumber.length()) {
             case 12:
-                if (phoneNumber.startsWith("+")) return phoneNumber;
+                if (phoneNumber.startsWith("+"))
+                    return phoneNumber;
             case 11:
-                return "+" + phoneNumber;
+                if (phoneNumber.startsWith("7"))
+                    return "+" + phoneNumber;
+                if (phoneNumber.startsWith("8"))
+                    return "+7" + phoneNumber.substring(1);
             case 10:
                 return "+7" + phoneNumber;
             default:

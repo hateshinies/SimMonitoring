@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>No files found</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<div th:include="header :: header"></div>
+<body>
+<h2 align="center">LDAP Authentification</h2><br>
+
+
+<form class="form-horizontal" action="/auth" method="post" enctype="form-data">
+    <div class="col-xs-8 col-sm-6">
+        <label for="login">Login</label>
+        <input type="text" class="form-inline" id="login" name="Login"><br>
+        <label for="password">Pswd</label>
+        <input type="text" class="form-inline" id="password" name="Password"><br>
+    </div>
+    <div>
+        <input type="submit" value="Go ahead" class="btn btn-primary btn-lg "><br>
+    </div>
+</form>
+
+
+</body>
+<div th:include="footer :: footer"></div>
+</html>

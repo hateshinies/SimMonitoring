@@ -15,8 +15,9 @@
                             <th>CurLoc</th>
                             <th>LastLoc</th>
                             <th>LastChDate</th>
-                            <!--<th>Hostname</th>-->
-                            <!--<th>IP address</th>-->
+                            <th>IP address</th>
+                            <th>HasCsd</th>
+                            <th>Functioning</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -30,10 +31,10 @@
                             <td th:text="${simInfo.curLocation}"></td>
                             <td th:text="${simInfo.lastLocation}"></td>
                             <td th:text="${simInfo.lastChangeDate}"></td>
-                            <!--<td th:text="${simInfo.hostname}"></td>-->
-                            <!--<td th:text="${simInfo.ipAddress}"></td>-->
-                            <td
-                            <a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a></td>
+                            <td th:text="${simInfo.ipAddress}"></td>
+                            <td th:text="${simInfo.haveCsd}"></td>
+                            <td th:text="${simInfo.func}"></td>
+                            <td<a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a></td>
                         </tr>
                         </tbody>
                     </table>

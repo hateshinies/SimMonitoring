@@ -1,5 +1,5 @@
 <div th:include="header :: header" xmlns:th="http://www.w3.org/1999/xhtml"
-     xmlns:th="http://www.w3.org/1999/xhtml"></div>
+     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 <body>
 <h4 align="center">Edit entry info</b></h4>
 <div class="section" align="center">
@@ -10,33 +10,33 @@
                     <thead>
                     <tr>
                         <th>Number</th>
-                        <th>Operator</th>
-                        <th>Id</th>
-                        <th>Owner</th>
-                        <th>Employee</th>
                         <th>CurLoc</th>
                         <th>LastLoc</th>
+                        <th>Id</th>
+                        <th>Operator</th>
+                        <th>Owner</th>
+                        <th>Employee</th>
                         <th>LastChDate</th>
-                        <!--<th>Hostname</th>-->
-                        <!--<th>IP address</th>-->
+                        <th>HasCsd</th>
+                        <th>Functioning</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <form th action="/update" class="form-horizontal" method="post" enctype="form-data">
+
                             <td th:text="${editedSimInfo.phoneNumber}"></td>
-                            <td><input type="text" class="form-inline" id="text" name="Operator"></td>
-                            <td th:text="${editedSimInfo.id}"></td>
-                            <input type="text" class="form-inline" id="text" name="Id" th:value="${editedSimInfo.id}">
-                            <!--вот здесь костыль-->
-                            <td><input type="text" class="form-inline" id="text" name="Owner"></td>
-                            <td><input type="text" class="form-inline" id="text" name="Employee"></td>
                             <td><input type="text" class="form-inline" id="text" name="Location"></td>
-                            <td th:text="${editedSimInfo.curLocation}"></td>
+                            <td th:text="${editedSimInfo.lastLocation}"></td>
+                            <td th:text="${editedSimInfo.id}"></td>
+                            <td th:text="${editedSimInfo.operator}"></td>
+                            <td th:text="${editedSimInfo.ownerSurname}"></td>
+                            <td th:text="${editedSimInfo.employeeSurname}"></td>
                             <td th:text="${editedSimInfo.lastChangeDate}"></td>
-                            <!--<td th:text="${editedSimInfo.hostname}"></td>-->
-                            <!--<td th:text="${editedSimInfo.ipAddress}"></td>-->
+                            <td><input type="checkbox" name="HasCsd" th:checked="${editedSimInfo.haveCsd}"/></td>
+                            <td><input type="checkbox" name="isFunc" th:checked="${editedSimInfo.func}"/></td>
+                            <input type="hidden" class="form-inline" id="text" name="Id" th:value="${editedSimInfo.id}"> <!-->
                             <td><input type="submit" value="Save" class="btn btn-primary btn-lg "></td>
                             </td>
                         </form>

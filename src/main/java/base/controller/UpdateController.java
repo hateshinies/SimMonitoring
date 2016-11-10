@@ -16,23 +16,21 @@ public class UpdateController {
     @Autowired
     private SimInfoService simInfoService;
 
-    @RequestMapping(value = "/update")
-    public String update(@RequestHeader("host")
-                                 String hostname, HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Operator") String operator,
-                         @RequestParam("Employee") String employee, @RequestParam("Location") String location,
-                         @RequestParam("Owner") String owner) {
+    @RequestMapping("/update")
+//    @ResponseBody
+    public String update(HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Location") String location,
+                                @RequestParam(value = "isFunc", required=false) boolean isFunctioning,
+                                @RequestParam(value = "HasCsd", required=false) boolean hasCsd) {
         SimInfo simInfo = simInfoService.getById(id);
         simInfo.setLastLocation(simInfo.getCurLocation());
         simInfo.setCurLocation(location);
-        simInfo.setEmployeeSurname(employee);
-        simInfo.setOwnerSurname(owner);
+        simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
-        simInfo.setHostName(hostname);
-        simInfo.setHostName(request.getRemoteUser());
         simInfo.setIpAddress(request.getRemoteAddr());
-        simInfo.setFunctioning(true);   //
-        simInfo.setOperator(operator);
+        simInfo.setHaveCsd(hasCsd);
+        simInfo.setFunc(isFunctioning);
         simInfoService.save(simInfo);
         return "redirect:/";
+//        return simInfoService.findAll();
     }
 }
