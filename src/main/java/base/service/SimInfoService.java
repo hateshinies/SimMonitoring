@@ -12,7 +12,10 @@ public interface SimInfoService {
 
     List<SimInfo> findAll();
 
+    List<SimInfo> findByFuncTrue();
+
     void delete(Long id);
 
     boolean exists(Long id);
+
 }

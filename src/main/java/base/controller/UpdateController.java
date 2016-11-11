@@ -17,7 +17,6 @@ public class UpdateController {
     private SimInfoService simInfoService;
 
     @RequestMapping("/update")
-//    @ResponseBody
     public String update(HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Location") String location,
                                 @RequestParam(value = "isFunc", required=false) boolean isFunctioning,
                                 @RequestParam(value = "HasCsd", required=false) boolean hasCsd) {
@@ -31,6 +30,5 @@ public class UpdateController {
         simInfo.setFunc(isFunctioning);
         simInfoService.save(simInfo);
         return "redirect:/";
-//        return simInfoService.findAll();
     }
 }

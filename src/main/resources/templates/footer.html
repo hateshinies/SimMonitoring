@@ -1,5 +1,7 @@
 <footer class="section section-primary" id="block-4">
-    <h4 align="center">Functioning SIMs</b></h4>
+    <!--<h4 align="center">Functioning SIMs</b></h4>-->
+    <br>
+    <br>
     <div class="section" align="center">
         <div class="container">
             <div class="row" align="center">
@@ -12,9 +14,9 @@
                             <th>Id</th>
                             <th>Owner</th>
                             <th>Employee</th>
-                            <th>CurLoc</th>
-                            <th>LastLoc</th>
-                            <th>LastChDate</th>
+                            <th>CurrentLastLocation</th>
+                            <th>LastLocation</th>
+                            <th>LastChangeDate</th>
                             <th>IP address</th>
                             <th>HasCsd</th>
                             <th>Functioning</th>
@@ -23,18 +25,24 @@
                         </thead>
                         <tbody>
                         <tr th:each="simInfo : ${simInfos}">
-                            <td th:text="${simInfo.phoneNumber}"></td>
-                            <td th:text="${simInfo.operator}"></td>
-                            <td th:text="${simInfo.id}"></td>
-                            <td th:text="${simInfo.ownerSurname}"></td>
-                            <td th:text="${simInfo.employeeSurname}"></td>
-                            <td th:text="${simInfo.curLocation}"></td>
-                            <td th:text="${simInfo.lastLocation}"></td>
-                            <td th:text="${simInfo.lastChangeDate}"></td>
-                            <td th:text="${simInfo.ipAddress}"></td>
-                            <td th:text="${simInfo.haveCsd}"></td>
-                            <td th:text="${simInfo.func}"></td>
-                            <td<a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a></td>
+                            <form action="#" th:action="@{/} + ${simInfo.id}"
+                                  class="form-horizontal" th: method="post" enctype="form-data">
+                                <td th:text="${simInfo.phoneNumber}"></td>
+                                <td th:text="${simInfo.operator}"></td>
+                                <td th:text="${simInfo.id}"></td>
+                                <td th:text="${simInfo.ownerSurname}"></td>
+                                <td th:text="${simInfo.employeeSurname}"></td>
+                                <td th:text="${simInfo.curLocation}"></td>
+                                <td th:text="${simInfo.lastLocation}"></td>
+                                <td th:text="${simInfo.lastChangeDate}"></td>
+                                <td th:text="${simInfo.ipAddress}"></td>
+                                <td th:text="${simInfo.haveCsd}"></td>
+                                <td th:text="${simInfo.func}"></td>
+                                <td<a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a>
+                                <input type="hidden" name="_method" value="delete">
+                                <input type="submit" value="Delete" class="btn btn-primary btn-lg ">
+                                </a></td>
+                            </form>
                         </tr>
                         </tbody>
                     </table>

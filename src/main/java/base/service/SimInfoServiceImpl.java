@@ -21,6 +21,11 @@ public class SimInfoServiceImpl implements SimInfoService {
     }
 
     @Override
+    public List<SimInfo> findByFuncTrue(){
+        return simInfoRepository.findByFuncTrue();
+    }
+
+    @Override
     public void delete(Long id) {
         simInfoRepository.delete(id);
     }
@@ -39,5 +44,7 @@ public class SimInfoServiceImpl implements SimInfoService {
     public void save(SimInfo simInfo) {
         simInfoRepository.save(simInfo);
     }
+
+
 
 }

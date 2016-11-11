@@ -9,37 +9,36 @@
     <div class="container">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#" th:href="@{/}">Home</a></li>
+                <li class="active"><a href="#" th:href="@{/}">Functioning SIMs</a></li>
                 <li class="active"><a href="#" th:href="@{/all}">All SIMs</a></li>
             </ul>
         </div>
     </div>
-<h2 align="center"><b>Add new SIM</b></h2>
-<div class="section" align="center">
-    <br>
-    <div class="container">
-        <div class="row" align="center">
-            <br>
-            <form class="form-horizontal" action="/add" method="post" enctype="form-data">
-                <div class="col-xs-8 col-sm-6">
-                    <label for="text">PhoneNumber</label>
-                    <input type="text" class="form-inline" id="text" name="PhoneNumber"><br>
-                    <label for="text">SIM Owner</label>
-                    <input type="text" class="form-inline" id="text" name="Owner"><br>
-                    <label for="text">Operator</label>
-                    <input type="text" class="form-inline" id="text" name="Operator"><br>
-                    <label for="text">SIM Location</label>
-                    <input type="text" class="form-inline" id="text" name="Location"><br>
-                    <label for="checkbox">HasCsd</label>
-                    <input type="checkbox" id="checkbox" name="HasCsd" checked="true"/><br>
-
-                </div>
+    <h2 align="center"><b>Add new SIM</b></h2>
+    <div style="text-align: center">
+        <br>
+        <div style="text-align: center" >
+            <div class="row" align="center">
                 <br>
-                <div>
-                    <input type="submit" value="SaveSimInfo" class="btn btn-primary btn-lg"><br>
-                </div>
-            </form>
+                <form class="form-horizontal" action="/add" method="post" enctype="form-data">
+                    <div class="col-xs-8 col-sm-6" >
+                        <label for="text">PhoneNumber</label>
+                        <input type="text" class="form-inline" id="text" name="PhoneNumber"><br>
+                        <label for="text">SIM Owner</label>
+                        <input type="text" class="form-inline" id="text" name="Owner"><br>
+                        <label for="text">Operator</label>
+                        <input type="text" class="form-inline" id="text" name="Operator"><br>
+                        <label for="text">SIM Location</label>
+                        <input type="text" class="form-inline" id="text" name="Location"><br>
+                        <label for="checkbox">HasCsd</label>
+                        <input type="checkbox" id="checkbox" name="HasCsd" checked="true"/><br>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="submit" value="SaveSimInfo" class="btn btn-primary btn-lg"><br>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </div>
