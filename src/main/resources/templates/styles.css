@@ -1,0 +1,20 @@
+.main {
+    width: 300px;
+    margin: auto;
+}
+
+.label-block {
+    width: 150px;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.input-block {
+    text-align: center;
+}
+
+td {
+    padding-bottom: 3px;
+}
