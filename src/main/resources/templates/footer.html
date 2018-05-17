@@ -25,23 +25,24 @@
                         </thead>
                         <tbody>
                         <tr th:each="simInfo : ${simInfos}">
-                            <form action="#" th:action="@{/} + ${simInfo.id}"
-                                  class="form-horizontal" th: method="post" enctype="form-data">
-                                <td th:text="${simInfo.phoneNumber}"></td>
-                                <td th:text="${simInfo.operator}"></td>
-                                <td th:text="${simInfo.id}"></td>
-                                <td th:text="${simInfo.ownerSurname}"></td>
-                                <td th:text="${simInfo.employeeSurname}"></td>
-                                <td th:text="${simInfo.curLocation}"></td>
-                                <td th:text="${simInfo.lastLocation}"></td>
-                                <td th:text="${simInfo.lastChangeDate}"></td>
-                                <td th:text="${simInfo.ipAddress}"></td>
-                                <td th:text="${simInfo.haveCsd}"></td>
-                                <td th:text="${simInfo.func}"></td>
-                                <td<a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a>
-                                <input type="hidden" name="_method" value="delete">
-                                <input type="submit" value="Delete" class="btn btn-primary btn-lg ">
-                                </a></td>
+                            <form th:action="@{/} + ${simInfo.id}" class="form-horizontal" th:method="post" enctype="form-data">
+                                <td id="phoneNumber" th:text="${simInfo.phoneNumber}"></td>
+                                <td class="editable" id="operator" th:text="${simInfo.operator}"></td>
+                                <td id="id" th:text="${simInfo.id}"></td>
+                                <td id="owner" th:text="${simInfo.ownerSurname}"></td>
+                                <td class="editable" id="employee" th:text="${simInfo.employeeSurname}"></td>
+                                <td class="editable" id="curLocation" th:text="${simInfo.curLocation}"></td>
+                                <td id="lastLocation" th:text="${simInfo.lastLocation}"></td>
+                                <td id="lastChangeDate" th:text="${simInfo.lastChangeDate}"></td>
+                                <td id="ipAddress" th:text="${simInfo.ipAddress}"></td>
+                                <td class="editable" id="haveCsd" th:text="${simInfo.haveCsd}"></td>
+                                <td id="func" th:text="${simInfo.func}"></td>
+                                <td>
+                                    <input type="hidden" class="form-inline" id="text" name="Id" th:value="${simInfo.id}"> <!-->
+                                    <input type="submit" value="Edit" class="btn btn-primary btn-lg edit" th:id="${simInfo.id}">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="submit" value="Delete" class="btn btn-primary btn-lg delete">
+                                </td>
                             </form>
                         </tr>
                         </tbody>

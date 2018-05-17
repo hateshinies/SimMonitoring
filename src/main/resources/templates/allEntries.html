@@ -1,5 +1,78 @@
-<div th:include="header :: header"></div>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="Sim-Monitoring"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <script th:src="@{//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js}"></script>
+    <script th:src="@{/scripts/scripts.js}" th:inline="javascript" ></script>
+</head>
 <body>
+<div th:include="header :: header"></div>
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" th:href="@{/}">Functioning SIMs</a></li>
+                <li class="active"><a href="#" th:href="@{/all}">All SIMs</a></li>
+            </ul>
+        </div>
+    </div>
+    <h2 align="center"><b>Add new SIM</b></h2>
 
-</body>
+    <div class="main">
+        <div class="info-block">
+            <form class="form-horizontal" action="/add" method="post" enctype="form-data">
+                <table class="form-table" cellpadding="0" cellspacing="0">
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="PhoneNumber">PhoneNumber</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="PhoneNumber" name="PhoneNumber">
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="Owner">SIM Owner</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="Owner" name="Owner">
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="Operator">Operator</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="Operator" name="Operator">
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="Location">SIM Location</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="Location" name="Location">
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="checkbox">Has Csd</label>
+                        </td>
+                        <td class="input-block">
+                            <input type="checkbox" id="checkbox" name="HasCsd" checked="true"/>
+                        </td>
+                    </tr>
+                    <tr class="submit-button">
+                        <td colspan="2">
+                            <input type="submit" value="Add" class="btn btn-primary btn-lg">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
 <div th:include="footer :: footer"></div>

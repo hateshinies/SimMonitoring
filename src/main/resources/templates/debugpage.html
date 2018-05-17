@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sim-Monitoring</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/scripts/scripts.js"></script>
+</head>
+<body>
+<div></div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Functioning SIMs</a></li>
+                <li class="active"><a href="/all">All SIMs</a></li>
+            </ul>
+        </div>
+    </div>
+    <h2 align="center"><b>Add new SIM</b></h2>
+
+    <div class="main">
+        <div class="info-block">
+            <form action="/add" class="form-horizontal" enctype="form-data" method="post">
+                <table cellpadding="0" cellspacing="0" class="form-table">
+                    <TBODY><tr class="form-row">
+                        <td class="label-block">
+                            <label for="PhoneNumber">PhoneNumber</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="PhoneNumber" name="PhoneNumber" />
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="Owner">SIM Owner</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="Owner" name="Owner" />
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="Operator">Operator</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="Operator" name="Operator" />
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="Location">SIM Location</label>
+                        </td>
+                        <td class="input-block">
+                            <input class="form-inline" id="Location" name="Location" />
+                        </td>
+                    </tr>
+                    <tr class="form-row">
+                        <td class="label-block">
+                            <label for="checkbox">Has Csd</label>
+                        </td>
+                        <td class="input-block">
+                            <input checked="true" id="checkbox" name="HasCsd" type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr class="submit-button">
+                        <td colspan="2">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Add" />
+                        </td>
+                    </tr>
+                    </TBODY></table>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <!--<h4 align="center">Functioning SIMs</b></h4>-->
+    <br />
+    <br />
+    <div align="center" class="section">
+        <div class="container">
+            <div align="center" class="row">
+                <div class="form-group">
+                    <table align="center" border="1" cellpadding="10" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Operator</th>
+                            <th>Id</th>
+                            <th>Owner</th>
+                            <th>Employee</th>
+                            <th>CurrentLastLocation</th>
+                            <th>LastLocation</th>
+                            <th>LastChangeDate</th>
+                            <th>IP address</th>
+                            <th>HasCsd</th>
+                            <th>Functioning</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <form class="form-horizontal" enctype="form-data" method="post" action="/4491">
+                                <td id="phoneNumber">+79066054491</td>
+                                <td class="editable" id="operator">yota</td>
+                                <td id="id">4491</td>
+                                <td id="owner">sanya</td>
+                                <td class="editable" id="employee"></td>
+                                <td class="editable" id="curLocation">lost</td>
+                                <td id="lastLocation"></td>
+                                <td id="lastChangeDate">2018-05-18 00:02:37.71</td>
+                                <td id="ipAddress">127.0.0.1</td>
+                                <td class="editable" id="haveCsd">false</td>
+                                <td id="func">true</td>
+                                <input class="form-inline" id="text" name="Id" type="hidden" value="4491" /> <!---->
+
+                                <td>
+                                    <input class="btn btn-primary btn-lg edit" type="submit" value="Edit" id="4491" />
+                                    <input name="_method" type="hidden" value="delete" />
+                                    <input class="btn btn-primary btn-lg delete" type="submit" value="Delete" />
+                                </td>
+                            </form>
+                        </tr>
+                        <tr>
+                            <form class="form-horizontal" enctype="form-data" method="post" action="/6977">
+                                <td id="phoneNumber">+79066056977</td>
+                                <td class="editable" id="operator">megafon</td>
+                                <td id="id">6977</td>
+                                <td id="owner">edmon</td>
+                                <td class="editable" id="employee"></td>
+                                <td class="editable" id="curLocation">krsk</td>
+                                <td id="lastLocation"></td>
+                                <td id="lastChangeDate">2018-05-18 00:13:21.208</td>
+                                <td id="ipAddress">127.0.0.1</td>
+                                <td class="editable" id="haveCsd">false</td>
+                                <td id="func">true</td>
+                                <input class="form-inline" id="text" name="Id" type="hidden" value="6977" /> <!---->
+
+                                <td>
+                                    <input class="btn btn-primary btn-lg edit" type="submit" value="Edit" id="6977" />
+                                    <input name="_method" type="hidden" value="delete" />
+                                    <input class="btn btn-primary btn-lg delete" type="submit" value="Delete" />
+                                </td>
+                            </form>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="section">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></body></html>

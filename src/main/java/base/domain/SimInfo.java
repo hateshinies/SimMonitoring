@@ -3,6 +3,8 @@ package base.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 
@@ -16,7 +18,11 @@ public class SimInfo {
     private boolean haveCsd;
     private String ownerSurname;
     private String employeeSurname;
+
+    @Size(min=10,max=12)
     private String phoneNumber;
+
+    //@NotNull
     private String curLocation;
     private String lastLocation;
     private String ipAddress;

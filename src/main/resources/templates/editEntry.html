@@ -1,6 +1,7 @@
 <div th:include="header :: header" xmlns:th="http://www.w3.org/1999/xhtml"
      xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 <body>
+<!--edit entry-->
 <h4 align="center">Edit SIM info</b></h4>
 <div class="section" align="center">
     <div class="container">
@@ -34,7 +35,7 @@
                             <td th:text="${editedSimInfo.ownerSurname}"></td>
                             <td th:text="${editedSimInfo.employeeSurname}"></td>
                             <td th:text="${editedSimInfo.lastChangeDate}"></td>
-                            <td><input type="checkbox" name="HasCsd" th:checked="${editedSimInfo.haveCsd}"/></td>
+                            <td><input type="checkbox" name="isHasCsd" th:checked="${editedSimInfo.haveCsd}"/></td>
                             <td><input type="checkbox" name="isFunc" th:checked="${editedSimInfo.func}"/></td>
                             <input type="hidden" class="form-inline" id="text" name="Id" th:value="${editedSimInfo.id}"> <!-->
                             <td><input type="submit" value="Save" class="btn btn-primary btn-lg "></td>
@@ -52,3 +53,4 @@
 
 </body>
 <div th:include="footer :: footer"></div>
+<!--edit entry over-->

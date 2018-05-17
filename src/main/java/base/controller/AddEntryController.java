@@ -18,10 +18,10 @@ public class AddEntryController {
     @Autowired
     private SimInfoService simInfoService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add"/*, method = RequestMethod.POST*/)
     public String add(HttpServletRequest request, @RequestParam("PhoneNumber") String phoneNumber, @RequestParam("Operator") String operator,
                       @RequestParam("Location") String location,
-                      @RequestParam("Owner") String owner, @RequestParam(value = "HasCsd", required=false) boolean hasCsd) {
+                      @RequestParam("Owner") String owner, @RequestParam(value = "isHasCsd", required = false) boolean isHasCsd) {
         //validate phoneNumber
         phoneNumber = validateNumber(phoneNumber);
         if (phoneNumber.equals("error")) return "home";
@@ -31,8 +31,8 @@ public class AddEntryController {
         simInfo.setId(id);
         simInfo.setPhoneNumber(phoneNumber);
         simInfo.setFunc(true);
-        simInfo.setHaveCsd(hasCsd);
-        simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
+        simInfo.setHaveCsd(isHasCsd);
+        //simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
         simInfo.setOwnerSurname(owner);
         simInfo.setOperator(operator);
         simInfo.setCurLocation(location);

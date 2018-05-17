@@ -1,3 +1,4 @@
+/*
 package base;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .ldapAuthentication()
-                .userDnPatterns("uid={0},ou=Users,dc=ivt")
-                .groupSearchBase("dc=ivt")
-                .contextSource().url("ldap://ldap.ivt.lan");
+                .userDnPatterns("uid={0},ou=Users,dc=ibt")
+                .groupSearchBase("dc=ibt")
+                .contextSource().url("ldap://ldap.ibt.localdomain");
     }
-}
+}*/

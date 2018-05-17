@@ -19,14 +19,14 @@ public class UpdateController {
     @RequestMapping("/update")
     public String update(HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Location") String location,
                                 @RequestParam(value = "isFunc", required=false) boolean isFunctioning,
-                                @RequestParam(value = "HasCsd", required=false) boolean hasCsd) {
+                                @RequestParam(value = "isHasCsd", required=false) boolean isHasCsd) {
         SimInfo simInfo = simInfoService.getById(id);
         simInfo.setLastLocation(simInfo.getCurLocation());
         simInfo.setCurLocation(location);
-        simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
+        //simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
         simInfo.setIpAddress(request.getRemoteAddr());
-        simInfo.setHaveCsd(hasCsd);
+        simInfo.setHaveCsd(isHasCsd);
         simInfo.setFunc(isFunctioning);
         simInfoService.save(simInfo);
         return "redirect:/";
