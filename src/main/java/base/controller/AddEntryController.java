@@ -5,7 +5,6 @@ import base.service.SimInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +14,17 @@ import java.util.Date;
 @Controller
 public class AddEntryController {
 
+
     @Autowired
     private SimInfoService simInfoService;
 
     @RequestMapping(value = "/add"/*, method = RequestMethod.POST*/)
-    public String add(HttpServletRequest request, @RequestParam("PhoneNumber") String phoneNumber, @RequestParam("Operator") String operator,
-                      @RequestParam("Location") String location,
-                      @RequestParam("Owner") String owner, @RequestParam(value = "isHasCsd", required = false) boolean isHasCsd) {
+    public String add(HttpServletRequest request,
+                      @RequestParam("phoneNumber") String phoneNumber,
+                      @RequestParam("operator") String operator,
+                      @RequestParam("location") String location,
+                      @RequestParam("owner") String owner,
+                      @RequestParam(value = "CSD", required = false) boolean CSD) {
         //validate phoneNumber
         phoneNumber = validateNumber(phoneNumber);
         if (phoneNumber.equals("error")) return "home";
@@ -30,8 +33,8 @@ public class AddEntryController {
         SimInfo simInfo = new SimInfo();
         simInfo.setId(id);
         simInfo.setPhoneNumber(phoneNumber);
-        simInfo.setFunc(true);
-        simInfo.setHaveCsd(isHasCsd);
+        simInfo.setFunctioning(true);
+        simInfo.setCSD(CSD);
         //simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
         simInfo.setOwnerSurname(owner);
         simInfo.setOperator(operator);

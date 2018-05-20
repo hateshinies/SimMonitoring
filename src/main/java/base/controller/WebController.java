@@ -1,3 +1,4 @@
+/*
 package base.controller;
 
 import javax.validation.Valid;
@@ -25,4 +26,4 @@ public class WebController extends WebMvcConfigurerAdapter {
             return mv;
     }
 
-}
+}*/

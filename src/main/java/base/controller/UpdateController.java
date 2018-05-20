@@ -17,18 +17,22 @@ public class UpdateController {
     private SimInfoService simInfoService;
 
     @RequestMapping("/update")
-    public String update(HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Location") String location,
-                                @RequestParam(value = "isFunc", required=false) boolean isFunctioning,
-                                @RequestParam(value = "isHasCsd", required=false) boolean isHasCsd) {
+    public String update(HttpServletRequest request,
+                         @RequestParam("id") long id,
+                         @RequestParam("location") String location,
+                         @RequestParam("employee") String employee,
+                         @RequestParam(value = "functioning", required = false) boolean functioning,
+                         @RequestParam(value = "CSD", required = false) boolean CSD) {
         SimInfo simInfo = simInfoService.getById(id);
         simInfo.setLastLocation(simInfo.getCurLocation());
         simInfo.setCurLocation(location);
         //simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
+        simInfo.setEmployeeSurname(employee);
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
         simInfo.setIpAddress(request.getRemoteAddr());
-        simInfo.setHaveCsd(isHasCsd);
-        simInfo.setFunc(isFunctioning);
+        simInfo.setCSD(CSD);
+        simInfo.setFunctioning(functioning);
         simInfoService.save(simInfo);
-        return "redirect:/";
+        return "redirect:/all";
     }
 }

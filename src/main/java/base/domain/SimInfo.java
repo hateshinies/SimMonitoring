@@ -3,7 +3,6 @@ package base.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
@@ -14,8 +13,8 @@ public class SimInfo {
 
     @Id
     public long id;
-    private boolean func;
-    private boolean haveCsd;
+    private boolean functioning;
+    private boolean CSD;
     private String ownerSurname;
     private String employeeSurname;
 
@@ -41,17 +40,17 @@ public class SimInfo {
     public void setId(long id) {
         this.id = id;
     }
-    public boolean isFunc() {
-        return func;
+    public boolean getFunctioning() {
+        return functioning;
     }
-    public void setFunc(boolean func) {
-        this.func = func;
+    public void setFunctioning(boolean functioning) {
+        this.functioning = functioning;
     }
-    public boolean isHaveCsd() {
-        return haveCsd;
+    public boolean getCSD() {
+        return CSD;
     }
-    public void setHaveCsd(boolean haveCsd) {
-        this.haveCsd = haveCsd;
+    public void setCSD(boolean CSD) {
+        this.CSD = CSD;
     }
     public String getOperator() {
         return operator;

@@ -13,12 +13,13 @@ import java.util.List;
 
 @Controller
 public class NavigationController {
+
     @Autowired
     SimInfoService simInfoService;
 
     @RequestMapping("/")
     public String index(Model model) {
-        List<SimInfo> simInfos = simInfoService.findByFuncTrue();
+        List<SimInfo> simInfos = simInfoService.findByFunctioningTrue();
         model.addAttribute("simInfos", simInfos);
         return "home";
     }
@@ -26,7 +27,7 @@ public class NavigationController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String update(Model model, @PathVariable Long id) {
         SimInfo current = simInfoService.getById(id);
-        List<SimInfo> simInfos = simInfoService.findByFuncTrue();
+        List<SimInfo> simInfos = simInfoService.findByFunctioningTrue();
         model.addAttribute("editedSimInfo", current);
         model.addAttribute("simInfos", simInfos);
         return "editEntry";
@@ -35,10 +36,9 @@ public class NavigationController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String delete(Model model, @PathVariable Long id) {
         simInfoService.delete(id);
-        model.addAttribute("simInfos", simInfoService.findByFuncTrue());
+        model.addAttribute("simInfos", simInfoService.findByFunctioningTrue());
         return "redirect:/";
     }
-
 
     @RequestMapping("/all")
     public String all(Model model) {

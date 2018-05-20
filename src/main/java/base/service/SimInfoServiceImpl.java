@@ -21,8 +21,8 @@ public class SimInfoServiceImpl implements SimInfoService {
     }
 
     @Override
-    public List<SimInfo> findByFuncTrue(){
-        return simInfoRepository.findByFuncTrue();
+    public List<SimInfo> findByFunctioningTrue(){
+        return simInfoRepository.findByFunctioningTrue();
     }
 
     @Override

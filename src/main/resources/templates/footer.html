@@ -1,4 +1,4 @@
-<footer class="section section-primary" id="block-4">
+<footer class="section section-primary" xmlns:th="http://www.w3.org/1999/xhtml">
     <!--<h4 align="center">Functioning SIMs</b></h4>-->
     <br>
     <br>
@@ -14,34 +14,41 @@
                             <th>Id</th>
                             <th>Owner</th>
                             <th>Employee</th>
-                            <th>CurrentLastLocation</th>
+                            <th>CurrentLocation</th>
                             <th>LastLocation</th>
                             <th>LastChangeDate</th>
                             <th>IP address</th>
-                            <th>HasCsd</th>
+                            <th>CSD</th>
                             <th>Functioning</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="simInfo : ${simInfos}">
-                            <form th:action="@{/} + ${simInfo.id}" class="form-horizontal" th:method="post" enctype="form-data">
+                            <form th action="/update" class="form-horizontal" method="post" enctype="form-data">
                                 <td id="phoneNumber" th:text="${simInfo.phoneNumber}"></td>
-                                <td class="editable" id="operator" th:text="${simInfo.operator}"></td>
+                                <td id="operator" class="editable" th:text="${simInfo.operator}"></td>
                                 <td id="id" th:text="${simInfo.id}"></td>
                                 <td id="owner" th:text="${simInfo.ownerSurname}"></td>
-                                <td class="editable" id="employee" th:text="${simInfo.employeeSurname}"></td>
-                                <td class="editable" id="curLocation" th:text="${simInfo.curLocation}"></td>
+                                <td id="employee" class="editable" th:text="${simInfo.employeeSurname}"></td>
+                                <td id="location" class="editable" th:text="${simInfo.curLocation}"></td>
                                 <td id="lastLocation" th:text="${simInfo.lastLocation}"></td>
                                 <td id="lastChangeDate" th:text="${simInfo.lastChangeDate}"></td>
                                 <td id="ipAddress" th:text="${simInfo.ipAddress}"></td>
-                                <td class="editable" id="haveCsd" th:text="${simInfo.haveCsd}"></td>
-                                <td id="func" th:text="${simInfo.func}"></td>
+                                <td id="CSD" class="editable">
+                                    <input type='checkbox' disabled="disabled" name='CSD' th:checked="${simInfo.CSD} " th:text="${simInfo.CSD}"/>
+                                </td>
+                                <td id="functioning" class="editable">
+                                    <input type='checkbox' disabled="disabled" name='functioning' th:checked="${simInfo.functioning}" th:text="${simInfo.functioning}"/>
+                                </td>
                                 <td>
-                                    <input type="hidden" class="form-inline" id="text" name="Id" th:value="${simInfo.id}"> <!-->
-                                    <input type="submit" value="Edit" class="btn btn-primary btn-lg edit" th:id="${simInfo.id}">
-                                    <input type="hidden" name="_method" value="delete">
-                                    <input type="submit" value="Delete" class="btn btn-primary btn-lg delete">
+                                    <input type="hidden" class="form-inline" name="id" th:value="${simInfo.id}"> <!--for save-->
+                                    <input type="hidden" value="Save" class="btn btn-primary btn-lg save" th:id="${simInfo.id}">
+
+                                    <input type="submit" value="Edit" class="btn btn-primary btn-lg edit">
+
+                                    <!--<input type="hidden" name="_method" value="delete" th:id="${simInfo.id}"> &lt;!&ndash;for delete&ndash;&gt;
+                                    <input type="submit" value="Delete" class="btn btn-primary btn-lg delete">-->
                                 </td>
                             </form>
                         </tr>
