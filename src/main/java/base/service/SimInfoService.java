@@ -8,7 +8,7 @@ public interface SimInfoService {
 
     void save(SimInfo simInfo);
 
-    SimInfo getById(Long id);
+    SimInfo findSimInfoById(Long id);
 
     List<SimInfo> findAll();
 
@@ -16,6 +16,6 @@ public interface SimInfoService {
 
     void delete(Long id);
 
-    boolean exists(Long id);
+    //boolean exists(SimInfo simInfo);
 
 }

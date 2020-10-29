@@ -3,6 +3,7 @@ package base.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import java.sql.Timestamp;
 
 
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
 public class SimInfo {
 
     @Id
-    public long id;
+    public Long id;
     private boolean functioning;
     private boolean CSD;
     private String ownerSurname;
@@ -36,7 +37,7 @@ public class SimInfo {
     public long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public boolean getFunctioning() {

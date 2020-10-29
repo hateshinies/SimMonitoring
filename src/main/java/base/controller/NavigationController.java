@@ -26,7 +26,7 @@ public class NavigationController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String update(Model model, @PathVariable Long id) {
-        SimInfo current = simInfoService.getById(id);
+        SimInfo current = simInfoService.findSimInfoById(id);
         List<SimInfo> simInfos = simInfoService.findByFunctioningTrue();
         model.addAttribute("editedSimInfo", current);
         model.addAttribute("simInfos", simInfos);

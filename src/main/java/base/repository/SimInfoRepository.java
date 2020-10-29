@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface SimInfoRepository extends JpaRepository<SimInfo, Long> {
     List<SimInfo> findByFunctioningTrue();
+
+    void deleteSimInfoById(Long id);
 }

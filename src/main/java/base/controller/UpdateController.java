@@ -18,16 +18,23 @@ public class UpdateController {
 
     @RequestMapping("/update")
     public String update(HttpServletRequest request,
-                         @RequestParam("id") long id,
-                         @RequestParam("location") String location,
-                         @RequestParam("employee") String employee,
-                         @RequestParam(value = "functioning", required = false) boolean functioning,
-                         @RequestParam(value = "CSD", required = false) boolean CSD) {
-        SimInfo simInfo = simInfoService.getById(id);
+                         @RequestParam("id") Long id,
+                         @RequestParam(name = "ed_operator", required = false) String operator,
+                         @RequestParam(name = "ed_curLocation", required = false) String curLocation,
+                         @RequestParam(name = "ed_employee", required = false) String employee,
+                         @RequestParam(value = "ed_functioning", required = false) boolean functioning,
+                         @RequestParam(value = "ed_CSD", required = false) boolean CSD) {
+        SimInfo simInfo = simInfoService.findSimInfoById(id);
+        if (simInfo == null) return "redirect:/error";
+        System.out.println("phoneId = " + id);
         simInfo.setLastLocation(simInfo.getCurLocation());
-        simInfo.setCurLocation(location);
+        if (!curLocation.isEmpty())
+            simInfo.setCurLocation(curLocation);
         //simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
-        simInfo.setEmployeeSurname(employee);
+        if (!employee.isEmpty())
+            simInfo.setEmployeeSurname(employee);
+        if (!operator.isEmpty())
+            simInfo.setOperator(operator);
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
         simInfo.setIpAddress(request.getRemoteAddr());
         simInfo.setCSD(CSD);

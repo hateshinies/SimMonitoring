@@ -14,22 +14,21 @@ import java.util.Date;
 @Controller
 public class AddEntryController {
 
-
     @Autowired
     private SimInfoService simInfoService;
 
     @RequestMapping(value = "/add"/*, method = RequestMethod.POST*/)
     public String add(HttpServletRequest request,
-                      @RequestParam("phoneNumber") String phoneNumber,
-                      @RequestParam("operator") String operator,
-                      @RequestParam("location") String location,
-                      @RequestParam("owner") String owner,
-                      @RequestParam(value = "CSD", required = false) boolean CSD) {
-        //validate phoneNumber
+                      @RequestParam("ad_phoneNumber") String phoneNumber,
+                      @RequestParam("ad_operator") String operator,
+                      @RequestParam("ad_location") String location,
+                      @RequestParam("ad_owner") String owner,
+                      @RequestParam(value = "ad_CSD", required = false) boolean CSD) {
         phoneNumber = validateNumber(phoneNumber);
         if (phoneNumber.equals("error")) return "home";
-        long id = Long.parseLong(phoneNumber.substring(phoneNumber.length() - 4));  //взять последние 4 цифры
-        if (simInfoService.exists(id)) id++;
+        Long id = Long.parseLong(phoneNumber.substring(phoneNumber.length() - 4));  //взять последние 4 цифры
+        System.out.println("phoneId = " + id);
+       // if (simInfoService.exists(simInfoService.findById(id))) id++;
         SimInfo simInfo = new SimInfo();
         simInfo.setId(id);
         simInfo.setPhoneNumber(phoneNumber);

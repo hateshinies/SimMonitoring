@@ -28,7 +28,7 @@
                         <form th action="/update" class="form-horizontal" method="post" enctype="form-data">
 
                             <td th:text="${editedSimInfo.phoneNumber}"></td>
-                            <td><input type="text" class="form-inline" name="location"></td>
+                            <td><input type="text" class="form-inline" name="curLocation"></td>
                             <td th:text="${editedSimInfo.lastLocation}"></td>
                             <td th:text="${editedSimInfo.id}"></td>
                             <td ><input type="text" class="form-inline" name="operator"></td>
@@ -37,7 +37,7 @@
                             <td th:text="${editedSimInfo.lastChangeDate}"></td>
                             <td><input type="checkbox" name="CSD" th:checked="${editedSimInfo.CSD}"/></td>
                             <td><input type="checkbox" name="functioning" th:checked="${editedSimInfo.functioning}"/></td>
-                            <input type="hidden" class="form-inline" id="text" name="id" th:value="${editedSimInfo.id}"> <!-->
+                            <input type="hidden" class="form-inline" id="text" name="id" th:value="${editedSimInfo.id}">
                             <td><input type="submit" value="Save" class="btn btn-primary btn-lg "></td>
                             </td>
                         </form>
