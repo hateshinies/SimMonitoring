@@ -1,0 +1,32 @@
+.main {
+    width: 400px;
+    margin: auto;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.input-block {
+    text-align: center;
+}
+
+td {
+    padding-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.new-input {
+    width: 90px;
+}
+
+.editable {
+    text-align: center;
+}
+
+.label-block {
+    width: 150px;
+}

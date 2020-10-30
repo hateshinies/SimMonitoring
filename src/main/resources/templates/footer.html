@@ -10,13 +10,12 @@
                             <th>Number</th>
                             <th>Operator</th>
                             <th>Id</th>
-                            <th>Owner</th>
                             <th>Employee</th>
                             <th>CurLoc</th>
                             <th>LastLoc</th>
                             <th>LastChDate</th>
-                            <!--<th>Hostname</th>-->
-                            <!--<th>IP address</th>-->
+                            <!--<th>Hostname</th>
+                            <th>IP address</th>-->
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -25,14 +24,13 @@
                             <td th:text="${simInfo.phoneNumber}"></td>
                             <td th:text="${simInfo.operator}"></td>
                             <td th:text="${simInfo.id}"></td>
-                            <td th:text="${simInfo.ownerSurname}"></td>
-                            <td th:text="${simInfo.employeeSurname}"></td>
+                            <td th:text="${simInfo.employee}"></td>
                             <td th:text="${simInfo.curLocation}"></td>
                             <td th:text="${simInfo.lastLocation}"></td>
                             <td th:text="${simInfo.lastChangeDate}"></td>
-                            <!--<td th:text="${simInfo.hostname}"></td>-->
-                            <!--<td th:text="${simInfo.ipAddress}"></td>-->
-                            <td
+                            <!--<td th:text="${simInfo.hostname}"></td>
+                            <td th:text="${simInfo.ipAddress}"></td>-->
+                            <td>
                             <a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a></td>
                         </tr>
                         </tbody>

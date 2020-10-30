@@ -17,21 +17,28 @@ public class UpdateController {
     private SimInfoService simInfoService;
 
     @RequestMapping(value = "/update")
-    public String update(@RequestHeader("host")
-                                 String hostname, HttpServletRequest request, @RequestParam("Id") long id, @RequestParam("Operator") String operator,
-                         @RequestParam("Employee") String employee, @RequestParam("Location") String location,
-                         @RequestParam("Owner") String owner) {
+    public String update(@RequestHeader("host") String hostname,
+                         HttpServletRequest request,
+                         @RequestParam("ed_id") long id,
+                         @RequestParam("ed_operator") String operator,
+                         @RequestParam("ed_employee") String employee,
+                         @RequestParam("ed_location") String location,
+                         @RequestParam(value = "ed_isFunctioning", required = false) boolean isFunctioning,
+                         @RequestParam(value = "ed_CSD", required = false) boolean CSD
+                         ) {
         SimInfo simInfo = simInfoService.getById(id);
+        if (simInfo == null) return "redirect:/error";
         simInfo.setLastLocation(simInfo.getCurLocation());
         simInfo.setCurLocation(location);
-        simInfo.setEmployeeSurname(employee);
-        simInfo.setOwnerSurname(owner);
+        //simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
+        simInfo.setEmployee(employee);
+        simInfo.setOperator(operator);
+        simInfo.setFunctioning(isFunctioning);
+        simInfo.setCSD(CSD);
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
         simInfo.setHostName(hostname);
         simInfo.setHostName(request.getRemoteUser());
         simInfo.setIpAddress(request.getRemoteAddr());
-        simInfo.setFunctioning(true);   //
-        simInfo.setOperator(operator);
         simInfoService.save(simInfo);
         return "redirect:/";
     }

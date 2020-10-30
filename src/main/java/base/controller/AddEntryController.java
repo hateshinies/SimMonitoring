@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -18,23 +17,25 @@ public class AddEntryController {
     private SimInfoService simInfoService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@RequestParam("PhoneNumber") String phoneNumber, @RequestParam("Operator") String operator,
-                      @RequestParam("Employee") String employee, @RequestParam("Location") String location,
-                      @RequestParam("Owner") String owner) {
-        //validate phoneNumber
+    public String add(@RequestParam("ad_phoneNumber") String phoneNumber,
+                      @RequestParam("ad_operator") String operator,
+                      @RequestParam("ad_employee") String employee,
+                      @RequestParam("ad_location") String location,
+                      @RequestParam(value = "ad_CSD", required = false) boolean CSD //Не передается состояние чекбокса:(
+    ) {
         phoneNumber = validateNumber(phoneNumber);
         if (phoneNumber.equals("error")) return "home";
         long id = Long.parseLong(phoneNumber.substring(phoneNumber.length() - 4));  //взять последние 4 цифры
         if (simInfoService.exists(id)) id++;
         SimInfo simInfo = new SimInfo();
         simInfo.setId(id);
-        simInfo.setFunctioning(true);
-        simInfo.setCurLocation(location);
-        simInfo.setEmployeeSurname(employee);
-        simInfo.setOwnerSurname(owner);
         simInfo.setPhoneNumber(phoneNumber);
         simInfo.setOperator(operator);
+        simInfo.setEmployee(employee);
+        simInfo.setCurLocation(location);
         simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
+        simInfo.setFunctioning(true);
+        simInfo.setCSD(CSD);
         simInfoService.save(simInfo);
         return "redirect:/";
     }
