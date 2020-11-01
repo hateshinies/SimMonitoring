@@ -1,12 +1,13 @@
 package base.controller;
 
-import base.domain.SimInfo;
-import base.service.SimInfoService;
+import base.domain.AnimalLoss;
+import base.service.AnimalLossService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -14,33 +15,17 @@ import java.util.Date;
 public class AddEntryController {
 
     @Autowired
-    private SimInfoService simInfoService;
+    private AnimalLossService animalLossService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@RequestParam("ad_phoneNumber") String phoneNumber,
-                      @RequestParam("ad_operator") String operator,
-                      @RequestParam("ad_employee") String employee,
-                      @RequestParam("ad_location") String location,
-                      @RequestParam(value = "ad_CSD", required = false) boolean CSD //Не передается состояние чекбокса:(
-    ) {
-        phoneNumber = validateNumber(phoneNumber);
-        if (phoneNumber.equals("error")) return "home";
-        long id = Long.parseLong(phoneNumber.substring(phoneNumber.length() - 4));  //взять последние 4 цифры
-        if (simInfoService.exists(id)) id++;
-        SimInfo simInfo = new SimInfo();
-        simInfo.setId(id);
-        simInfo.setPhoneNumber(phoneNumber);
-        simInfo.setOperator(operator);
-        simInfo.setEmployee(employee);
-        simInfo.setCurLocation(location);
-        simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
-        simInfo.setFunctioning(true);
-        simInfo.setCSD(CSD);
-        simInfoService.save(simInfo);
+    public String add(@RequestParam("ad_age") String age) {
+        AnimalLoss animalLoss = new AnimalLoss();
+        animalLoss.setAge(age);
+        animalLossService.save(animalLoss);
         return "redirect:/";
     }
 
-    private String validateNumber(String phoneNumber) {
+   /* private String validateNumber(String phoneNumber) {
         switch (phoneNumber.length()) {
             case 12:
                 if (phoneNumber.startsWith("+")) return phoneNumber;
@@ -51,5 +36,5 @@ public class AddEntryController {
             default:
                 return "error";
         }
-    }
+    }*/
 }

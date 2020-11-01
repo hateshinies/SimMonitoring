@@ -1,7 +1,7 @@
 <div th:include="header :: header" xmlns:th="http://www.w3.org/1999/xhtml"
      xmlns:th="http://www.w3.org/1999/xhtml"></div>
 <body>
-<h4 align="center">Edit entry info</b></h4>
+<h4 align="center">Edit lost animal entry</b></h4>
 <div class="section" align="center">
     <div class="container">
         <div class="row" align="center">
@@ -9,42 +9,36 @@
                 <table border="1" align="center" cellspacing="0" cellpadding="10">
                     <thead>
                     <tr>
-                        <th>PhoneNumber</th>
-                        <th>Operator</th>
-                        <th>Id</th>
-                        <th>Employee</th>
-                        <th>CurLoc</th>
-                        <th>LastLoc</th>
-                        <th>LastChDate</th>
-                        <!--<th>Hostname</th>
-                        <th>IP address</th>-->
-                        <th>Action</th>
+                        <th>name</th>
+                        <th>age</th>
+                        <th>breed</th>
+                        <th>colour</th>
+                        <th>gender</th>
+                        <th>description</th>
+                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <form th action="/update" class="form-horizontal" method="post" enctype="form-data">
-                            <td th:text="${editedSimInfo.phoneNumber}"></td>
+                            <td th:text="${editAnimalLoss.name}"></td>
                             <td>
-                                <input class="form-inline" id="operator" name="ed_operator"
-                                       th:value="${editedSimInfo.operator}">
+                                <input class="form-inline" id="age" name="ed_age"
+                                       th:value="${editAnimalLoss.age}">
                             </td>
                             <td>
-                                <input class="hidden" id="id" name="ed_id"
-                                       th:value="${editedSimInfo.id}">
+                                <input class="hidden" id="breed" name="ed_breed"
+                                       th:value="${editAnimalLoss.breed}">
                             </td>
                             <td>
-                                <input class="form-inline" id="employee" name="ed_employee"
-                                       th:value="${editedSimInfo.employee}">
+                                <input class="form-inline" id="colour" name="ed_colour"
+                                       th:value="${editAnimalLoss.colour}">
                             </td>
                             <td>
-                                <input class="form-inline" id="location" name="ed_location"
-                                       th:value="${editedSimInfo.curLocation}">
+                                <input class="form-inline" id="gender" name="ed_gender"
+                                       th:value="${editAnimalLoss.gender}">
                             </td>
-                            <td th:text="${editedSimInfo.lastLocation}"></td>
-                            <td th:text="${editedSimInfo.lastChangeDate}"></td>
-                            <!--<td th:text="${editedSimInfo.hostname}"></td>
-                            <td th:text="${editedSimInfo.ipAddress}"></td>-->
+                            <td th:text="${editAnimalLoss.description}"></td>
                             <td><input type="submit" value="Save" class="btn btn-primary btn-lg "></td>
                             </td>
                         </form>

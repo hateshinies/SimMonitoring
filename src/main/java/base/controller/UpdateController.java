@@ -1,7 +1,7 @@
 package base.controller;
 
-import base.domain.SimInfo;
-import base.service.SimInfoService;
+import base.domain.AnimalLoss;
+import base.service.AnimalLossService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,32 +14,17 @@ import java.util.Date;
 public class UpdateController {
 
     @Autowired
-    private SimInfoService simInfoService;
+    private AnimalLossService animalLossService;
 
     @RequestMapping(value = "/update")
-    public String update(@RequestHeader("host") String hostname,
+    public String update(@RequestHeader("ed_id") long id,
                          HttpServletRequest request,
-                         @RequestParam("ed_id") long id,
-                         @RequestParam("ed_operator") String operator,
-                         @RequestParam("ed_employee") String employee,
-                         @RequestParam("ed_location") String location,
-                         @RequestParam(value = "ed_isFunctioning", required = false) boolean isFunctioning,
-                         @RequestParam(value = "ed_CSD", required = false) boolean CSD
-                         ) {
-        SimInfo simInfo = simInfoService.getById(id);
-        if (simInfo == null) return "redirect:/error";
-        simInfo.setLastLocation(simInfo.getCurLocation());
-        simInfo.setCurLocation(location);
-        //simInfo.setEmployeeSurname(request.getUserPrincipal().getName());
-        simInfo.setEmployee(employee);
-        simInfo.setOperator(operator);
-        simInfo.setFunctioning(isFunctioning);
-        simInfo.setCSD(CSD);
-        simInfo.setLastChangeDate(new Timestamp(new Date().getTime()));
-        simInfo.setHostName(hostname);
-        simInfo.setHostName(request.getRemoteUser());
-        simInfo.setIpAddress(request.getRemoteAddr());
-        simInfoService.save(simInfo);
+                         @RequestParam("ed_age") String age
+    ) {
+        AnimalLoss animalLoss = animalLossService.getById(id);
+        if (animalLoss == null) return "redirect:/error";
+        animalLoss.setAge(age);
+        animalLossService.save(animalLoss);
         return "redirect:/";
     }
 }

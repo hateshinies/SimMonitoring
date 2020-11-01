@@ -1,5 +1,5 @@
 <footer class="section section-primary" id="block-4">
-    <h4 align="center">Functioning SIMs</b></h4>
+    <h4 align="center">Lost Animals</b></h4>
     <div class="section" align="center">
         <div class="container">
             <div class="row" align="center">
@@ -7,31 +7,27 @@
                     <table border="1" align="center" cellspacing="0" cellpadding="10">
                         <thead>
                         <tr>
-                            <th>Number</th>
-                            <th>Operator</th>
+                            <th>name</th>
+                            <th>age</th>
                             <th>Id</th>
-                            <th>Employee</th>
-                            <th>CurLoc</th>
-                            <th>LastLoc</th>
-                            <th>LastChDate</th>
-                            <!--<th>Hostname</th>
-                            <th>IP address</th>-->
-                            <th>Action</th>
+                            <th>breed</th>
+                            <th>colour</th>
+                            <th>gender</th>
+                            <th>city</th>
+                            <th>description</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="simInfo : ${simInfos}">
-                            <td th:text="${simInfo.phoneNumber}"></td>
-                            <td th:text="${simInfo.operator}"></td>
-                            <td th:text="${simInfo.id}"></td>
-                            <td th:text="${simInfo.employee}"></td>
-                            <td th:text="${simInfo.curLocation}"></td>
-                            <td th:text="${simInfo.lastLocation}"></td>
-                            <td th:text="${simInfo.lastChangeDate}"></td>
-                            <!--<td th:text="${simInfo.hostname}"></td>
-                            <td th:text="${simInfo.ipAddress}"></td>-->
+                        <tr th:each="animalLoss : ${animalLosses}">
+                            <td th:text="${animalLoss.name}"></td>
+                            <td th:text="${animalLoss.age}"></td>
+                            <td th:text="${animalLoss.breed}"></td>
+                            <td th:text="${animalLoss.colour}"></td>
+                            <td th:text="${animalLoss.gender}"></td>
+                            <td th:text="${animalLoss.city}"></td>
+                            <td th:text="${animalLoss.description}"></td>
                             <td>
-                            <a th:href="@{'/' + ${simInfo.id}}" th:text="Edit"></a></td>
+                            <a th:href="@{'/' + ${animalLoss.id}}" th:text="Edit"></a></td>
                         </tr>
                         </tbody>
                     </table>
