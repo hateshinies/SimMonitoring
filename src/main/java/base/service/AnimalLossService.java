@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface AnimalLossService {
 
-    void save(AnimalLoss simInfo);
+    void save(AnimalLoss animalLoss);
 
     AnimalLoss getById(Long id);
 
     List<AnimalLoss> findAll();
 
-    void delete(Long id);
+    //void delete(Long id);
 
-    boolean exists(Long id);
+    //boolean exists(Long id);
 }

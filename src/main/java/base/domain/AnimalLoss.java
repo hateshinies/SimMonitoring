@@ -12,19 +12,23 @@ public class AnimalLoss {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private boolean isActual;
+    private Date date;
+    private long coordLong;
+    private long coordLat;
+    private Timestamp createDate;
+    private String email;
     private String city;
+    private String phoneNumber;
+
     private String name;
     private String breed;
     private String age;
     private String colour;
     private boolean gender;
-    private Date date;
     private boolean isFoundOrLost;
-    private boolean isReward;
+    private String reward;
     private String description;
-    private long coordLong;
-    private long coordLat;
-    private Timestamp createDate;
 
     public AnimalLoss() {
     }
@@ -103,12 +107,36 @@ public class AnimalLoss {
         isFoundOrLost = foundOrLost;
     }
 
-    public boolean isReward() {
-        return isReward;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setReward(boolean reward) {
-        isReward = reward;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isActual() {
+        return isActual;
+    }
+
+    public void setActual(boolean actual) {
+        isActual = actual;
+    }
+
+    public String getReward() {
+        return reward;
+    }
+
+    public void setReward(String reward) {
+        this.reward = reward;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getDescription() {

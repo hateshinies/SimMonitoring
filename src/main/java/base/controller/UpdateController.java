@@ -19,7 +19,12 @@ public class UpdateController {
     @RequestMapping(value = "/update")
     public String update(@RequestHeader("ed_id") long id,
                          HttpServletRequest request,
-                         @RequestParam("ed_age") String age
+                         @RequestParam("ed_age") String age,
+                         @RequestParam("ed_email") String email,
+                         @RequestParam("ed_city") String city,
+                         @RequestParam("ed_phone") String phone,
+                         @RequestParam("ed_reward") String reward,
+                         @RequestParam("ed_description") String description
     ) {
         AnimalLoss animalLoss = animalLossService.getById(id);
         if (animalLoss == null) return "redirect:/error";

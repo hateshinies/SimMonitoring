@@ -20,15 +20,15 @@ public class AnimalLossServiceImpl implements AnimalLossService {
         return animalLossRepository.findAll();
     }
 
-    @Override
+    /*@Override
     public void delete(Long id) {
         animalLossRepository.delete(id);
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean exists(Long id) {
         return animalLossRepository.exists(id);
-    }
+    }*/
 
     @Override
     public AnimalLoss getById(Long id) {

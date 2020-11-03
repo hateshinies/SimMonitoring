@@ -7,21 +7,24 @@
                     <table border="1" align="center" cellspacing="0" cellpadding="10">
                         <thead>
                         <tr>
+                            <th>name</th>
                             <th>age</th>
-                            <th>email</th>
+                            <th>Id</th>
+                            <th>breed</th>
+                            <th>colour</th>
+                            <th>gender</th>
                             <th>city</th>
-                            <th>phone</th>
-                            <th>reward</th>
                             <th>description</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="animalLoss : ${animalLosses}">
+                            <td th:text="${animalLoss.name}"></td>
                             <td th:text="${animalLoss.age}"></td>
-                            <td th:text="${animalLoss.email}"></td>
+                            <td th:text="${animalLoss.breed}"></td>
+                            <td th:text="${animalLoss.colour}"></td>
+                            <td th:text="${animalLoss.gender}"></td>
                             <td th:text="${animalLoss.city}"></td>
-                            <td th:text="${animalLoss.phone}"></td>
-                            <td th:text="${animalLoss.reward}"></td>
                             <td th:text="${animalLoss.description}"></td>
                             <td>
                             <a th:href="@{'/' + ${animalLoss.id}}" th:text="Edit"></a></td>
