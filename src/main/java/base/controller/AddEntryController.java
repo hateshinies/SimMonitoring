@@ -3,8 +3,6 @@ package base.controller;
 import base.domain.AnimalLoss;
 import base.service.AnimalLossService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +17,6 @@ public class AddEntryController {
     @Autowired
     private AnimalLossService animalLossService;
 
-    @Autowired
-    private JavaMailSender javaMailSender;
-
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(@RequestParam("ad_age") String age,
                       @RequestParam("ad_email") String email,
@@ -34,21 +29,12 @@ public class AddEntryController {
         animalLoss.setAge(age);
         animalLoss.setEmail(email);
         animalLoss.setCity(city);
-        animalLoss.setPhoneNumber(phone);
+        animalLoss.setPhone(phone);
         animalLoss.setReward(reward);
         animalLoss.setDescription(description);
-        animalLossService.save(animalLoss);
-        sendEmail(email);
+        animalLoss.setCreateOn(new Timestamp(new Date().getTime()));
+        animalLossService.addEntry(animalLoss);
         return "redirect:/";
-    }
-
-    void sendEmail(String address) {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("sbuigji@yandex.ru");
-        msg.setFrom("searchingpets@yandex.ru");
-        msg.setSubject("Testing from Spring Boot");
-        msg.setText("Hello World \n Spring Boot Email");
-        javaMailSender.send(msg);
     }
 
    /* private String validateNumber(String phoneNumber) {

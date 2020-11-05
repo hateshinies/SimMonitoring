@@ -3,6 +3,7 @@ base\controller\AddEntryController.class
 base\repository\AnimalLossRepository.class
 base\Application.class
 base\service\AnimalLossService.class
+base\service\EmailSender.class
 base\controller\UpdateController.class
 base\service\AnimalLossServiceImpl.class
 base\controller\NavigationController.class

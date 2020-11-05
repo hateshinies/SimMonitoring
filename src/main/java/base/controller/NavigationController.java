@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class NavigationController {
+
     @Autowired
     AnimalLossService animalLossService;
 
@@ -18,7 +19,6 @@ public class NavigationController {
         return "home";
     }
 
-    @Deprecated                 ////
     @RequestMapping("/all")
     public String all(Model model) {
         model.addAttribute("animalLosses", animalLossService.findAll());

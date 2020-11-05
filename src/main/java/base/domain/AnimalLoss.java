@@ -11,15 +11,16 @@ public class AnimalLoss {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private boolean isActual;
     private Date date;
-    private long coordLong;
-    private long coordLat;
-    private Timestamp createDate;
+    private Long coordLong;
+    private Long coordLat;
+    private Timestamp createOn;
+    private Timestamp updateOn;
     private String email;
     private String city;
-    private String phoneNumber;
+    private String phone;
 
     private String name;
     private String breed;
@@ -35,11 +36,11 @@ public class AnimalLoss {
 
     //getter and setter stuff
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -107,12 +108,12 @@ public class AnimalLoss {
         isFoundOrLost = foundOrLost;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public boolean isActual() {
@@ -147,27 +148,35 @@ public class AnimalLoss {
         this.description = description;
     }
 
-    public long getCoordLong() {
+    public Long getCoordLong() {
         return coordLong;
     }
 
-    public void setCoordLong(long coordLong) {
+    public void setCoordLong(Long coordLong) {
         this.coordLong = coordLong;
     }
 
-    public long getCoordLat() {
+    public Long getCoordLat() {
         return coordLat;
     }
 
-    public void setCoordLat(long coordLat) {
+    public void setCoordLat(Long coordLat) {
         this.coordLat = coordLat;
     }
 
-    public Timestamp getCreateDate() {
-        return createDate;
+    public Timestamp getCreateOn() {
+        return createOn;
     }
 
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
+    public void setCreateOn(Timestamp createOn) {
+        this.createOn = createOn;
+    }
+
+    public Timestamp getUpdateOn() {
+        return updateOn;
+    }
+
+    public void setUpdateOn(Timestamp updateOn) {
+        this.updateOn = updateOn;
     }
 }
